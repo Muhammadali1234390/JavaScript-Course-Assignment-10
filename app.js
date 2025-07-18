@@ -1,26 +1,19 @@
 let email = prompt("Enter your email:");
 let hasAt = false;
-let hasDot = false;
 
-// 1. Check if '@' exists
 for (let i = 0; i < email.length; i++) {
   if (email[i] == '@') {
     hasAt = true;
+    break;
   }
 }
 
-// 2. Check if '.' is found in the last 3 characters
 let len = email.length;
+let last1 = email[len - 1];
+let last2 = email[len - 2];
+let last3 = email[len - 3];
 
-if (
-  (email[len - 1] == '.' || email[len - 2] == '.' || email[len - 3] == '.')
-  && len >= 5 // ensure enough characters
-) {
-  hasDot = true;
-}
-
-// 3. Final validation
-if (hasAt && hasDot) {
+if (hasAt && (last1 == '.' || last2 == '.' || last3 == '.')) {
   alert("✅ Valid Email");
 } else {
   alert("❌ Invalid Email");
