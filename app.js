@@ -1,9 +1,8 @@
 let email = prompt("Enter your email:");
-
 let hasAt = false;
-let hasDotNearEnd = false;
+let dotNearEnd = false;
 
-// Check if '@' exists
+// Check for '@'
 for (let i = 0; i < email.length; i++) {
   if (email[i] === '@') {
     hasAt = true;
@@ -11,16 +10,20 @@ for (let i = 0; i < email.length; i++) {
   }
 }
 
-// Check if '.' exists at 2nd or 3rd last position
+// Check for '.' in last 4 characters (2nd, 3rd, or 4th last)
 let len = email.length;
-if (len >= 4) {
-  if (email[len - 2] === '.' || email[len - 3] === '.') {
-    hasDotNearEnd = true;
-  }
+if (
+  email[len - 2] === '.' ||
+  email[len - 3] === '.' ||
+  email[len - 4] === '.'
+) {
+  dotNearEnd = true;
 }
 
-if (hasAt && hasDotNearEnd) {
+// Final result
+if (hasAt && dotNearEnd) {
   alert("✅ Valid Email");
 } else {
   alert("❌ Invalid Email");
 }
+
